@@ -1,12 +1,12 @@
 {
-	"port": "${port}",
+	"port": "${{ secrets.port }}",
 	"noindex": true,
 	"readonly": false,
 
 	"webservice": {
-		"database": "${database}",
-		"host": "${db_host}",
-		"port": "${db_port}",
+		"database": "${{ secrets.database }}",
+		"host": "${{ secrets.db_host }}",
+		"port": "${{ secrets.db_port }}",
 		"cron": "0 30 0 * * *"
 	}
 }
