@@ -20,7 +20,7 @@
   "homepage": "https://github.com/burnworks/burnworks-pa11y-dashboard",
   "license": "GPL-3.0",
   "engines": {
-    "node": ">=12 <16"
+    "node": ">=12 <15"
   },
   "dependencies": {
     "body-parser": "~1.19.0",
