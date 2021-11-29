@@ -2,6 +2,7 @@
 # Config files
 config/development.json
 config/test.json
+config/production.json
 
 # Generated npm files
 node_modules
