@@ -1,12 +1,12 @@
 {
-	"port": "${ secrets.port }",
+	"port": 80,
 	"noindex": true,
 	"readonly": false,
 
 	"webservice": {
-		"database": "${ secrets.database }",
-		"host": "${ secrets.db_host }",
-		"port": "${ secrets.db_port }",
+		"database": "mongodb://localhost/pa11y-webservice",
+		"host": "0.0.0.0",
+		"port": 3000,
 		"cron": "0 30 0 * * *"
 	}
 }
