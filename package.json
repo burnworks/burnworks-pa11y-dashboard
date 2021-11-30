@@ -2,7 +2,7 @@
   "name": "burnworks-pa11y-dashboard",
   "version": "4.1.0",
   "private": true,
-  "description": "Pa11y Dashboard is a visual web interface to the Pa11y accessibility reporter",
+  "description": "Pa11y Dashboard customized version. Pa11y Dashboard is a visual web interface to the Pa11y accessibility reporter",
   "keywords": [
     "accessibility",
     "analysis",
@@ -11,7 +11,8 @@
   "author": "Team Pa11y",
   "contributors": [
     "Perry Harlock (http://www.phwebs.co.uk/)",
-    "Rowan Manning (http://rowanmanning.com/)"
+    "Rowan Manning (http://rowanmanning.com/)",
+    "burnworks (https://hyper-text.org/)"
   ],
   "repository": {
     "type": "git",
