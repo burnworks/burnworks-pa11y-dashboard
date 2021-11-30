@@ -23,11 +23,25 @@ const hbs = require('express-hbs');
 const http = require('http');
 const pkg = require('./package.json');
 
+// Import http-auth modules
+const auth = require('http-auth');
+const authConnect = require('http-auth-connect');
+
 module.exports = initApp;
 
 // Initialise the application
 function initApp(config, callback) {
 	config = defaultConfig(config);
+
+	// Configure basic auth
+	const basic = auth.basic({
+		realm: "Visible user area"
+	}, (username, password, callback) => {
+		// Custom authentication
+		// Use callback(error) if you want to throw async error.
+		callback(username === config.username && password === config.password);
+	}
+	);
 
 	let webserviceUrl = config.webservice;
 	if (typeof webserviceUrl === 'object') {
@@ -53,6 +67,9 @@ function initApp(config, callback) {
 	app.express.use(bodyParser.urlencoded({
 		extended: true
 	}));
+
+	// Add authentication module to Pa11y app.
+	app.express.use(authConnect(basic));
 
 	// View engine
 	app.express.engine('html', hbs.express4({

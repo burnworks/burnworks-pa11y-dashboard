@@ -28,6 +28,8 @@ if (fs.existsSync(jsonPath)) {
 		port: Number(env('PORT', '4000')),
 		noindex: env('NOINDEX', 'true') === 'true',
 		readonly: env('READONLY', 'false') === 'true',
+		username: env('USERNAME', null),
+		password: env('PASSWORD', null),
 
 		webservice: env('WEBSERVICE_URL', {
 			database: env('WEBSERVICE_DATABASE', 'mongodb://localhost/pa11y-webservice'),
