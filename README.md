@@ -1,6 +1,34 @@
+# Pa11y Dashboard カスタマイズ版
+
+Pa11y Dashboard を実際の利用にあわせて少しカスタマイズした版です。具体的にはベーシック認証によるダッシュボード画面へのアクセス制限機能の追加、DigitalOcean で動作させる際、Puppeteer に `--no-sandbox` オプションがないとうまくいかなかったためその辺の設定を config ファイルに追加しています。
+
+```sh
+cd /opt/
+git clone https://github.com/burnworks/burnworks-pa11y-dashboard.git
+cd burnworks-pa11y-dashboard
+npm install
+```
+
+設定ファイルは環境に合わせて使用してください。
+
+```sh
+cp config/development.sample.json config/development.json
+cp config/production.sample.json config/production.json
+cp config/test.sample.json config/test.json
+```
+
+ベーシック認証の設定は下記に記述します。必ず変更してください。
+
+```
+	"username": "user",
+	"password": "pass",
+```
+
+↓↓Original README↓↓
+
 # Pa11y Dashboard
 
-Pa11y Dashboard is a web interface to the [Pa11y][pa11y] accessibility reporter; allowing you to focus on *fixing* issues rather than hunting them down.
+Pa11y Dashboard is a web interface to the [Pa11y][pa11y] accessibility reporter; allowing you to focus on _fixing_ issues rather than hunting them down.
 
 ![Version][shield-version]
 [![Node.js version support][shield-node]][info-node]
@@ -113,19 +141,19 @@ The boot configurations for Pa11y Dashboard are as follows. Look at the sample J
 
 ### port
 
-*(number)* The port to run the application on. Set via a config file or the `PORT` environment variable.
+_(number)_ The port to run the application on. Set via a config file or the `PORT` environment variable.
 
 ### noindex
 
-*(boolean)* If set to `true` (default), the dashboard will not be indexed by search engines. Set to `false` to allow indexing. Set via a config file or the `NOINDEX` environment variable.
+_(boolean)_ If set to `true` (default), the dashboard will not be indexed by search engines. Set to `false` to allow indexing. Set via a config file or the `NOINDEX` environment variable.
 
 ### readonly
 
-*(boolean)* If set to `true`, users will not be able to add, delete or run URLs (defaults to `false`). Set via a config file or the `READONLY` environment variable.
+_(boolean)_ If set to `true`, users will not be able to add, delete or run URLs (defaults to `false`). Set via a config file or the `READONLY` environment variable.
 
 ### siteMessage
 
-*(string)* A message to display prominently on the site home page. Defaults to `null`.
+_(string)_ A message to display prominently on the site home page. Defaults to `null`.
 
 ### webservice
 
@@ -158,15 +186,15 @@ make uglify  # Compile and uglify the client-side JavaScript
 
 ## Useful resources
 
-* [Setting up An Accessibility Dashboard from Scratch with Pa11y on DigitalOcean](https://una.im/pa11y-dash/)
-* [Monitoring Web Accessibility Compliance With Pa11y Dashboard](https://www.lullabot.com/articles/monitoring-web-accessibility-compliance-with-pa11y-dashboard)
+- [Setting up An Accessibility Dashboard from Scratch with Pa11y on DigitalOcean](https://una.im/pa11y-dash/)
+- [Monitoring Web Accessibility Compliance With Pa11y Dashboard](https://www.lullabot.com/articles/monitoring-web-accessibility-compliance-with-pa11y-dashboard)
 
 ## Troubleshooting
 
 ### Common issues
 
-* `500` errors or `Could not connect to pa11y-webservice` messages are often related to MongoDB. Ensure that you have the [appropriate version of MongoDB][#installing-mongodb] installed, and that it's running - it doesn't always start automatically.
-* Error messages saying that pa11y-webservice isn't running may be due to dependency installation problems. Try deleting your `pa11y-dashboard/node_modules` directory and running `npm install` again.
+- `500` errors or `Could not connect to pa11y-webservice` messages are often related to MongoDB. Ensure that you have the [appropriate version of MongoDB][#installing-mongodb] installed, and that it's running - it doesn't always start automatically.
+- Error messages saying that pa11y-webservice isn't running may be due to dependency installation problems. Try deleting your `pa11y-dashboard/node_modules` directory and running `npm install` again.
 
 ### Create a new issue
 
