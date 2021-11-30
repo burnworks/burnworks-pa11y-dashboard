@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "body-parser": "~1.19.0",
-    "chrome-aws-lambda": "^10.1.0",
     "compression": "~1.7.4",
     "express": "~4.17.1",
     "express-hbs": "~2.4.0",
@@ -33,8 +32,9 @@
     "moment": "~2.29.1",
     "pa11y-webservice": "~4.0.0",
     "pa11y-webservice-client-node": "~3.0.0",
-    "puppeteer-core": "^10.1.0",
-    "underscore": "~1.13.1"
+    "underscore": "~1.13.1",
+    "http-auth": "^4.1.9",
+    "http-auth-connect": "^1.0.5"
   },
   "devDependencies": {
     "bower": "^1.8.13",
