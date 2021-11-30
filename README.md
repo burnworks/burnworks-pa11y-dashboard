@@ -20,8 +20,8 @@ cp config/test.sample.json config/test.json
 ベーシック認証の設定は下記に記述します。必ず変更してください。
 
 ```
-	"username": "user",
-	"password": "pass",
+"username": "user",
+"password": "pass",
 ```
 
 ↓↓Original README↓↓
