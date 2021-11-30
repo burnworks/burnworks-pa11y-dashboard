@@ -2,11 +2,14 @@
 	"port": 4000,
 	"noindex": true,
 	"readonly": false,
+	"username": "user",
+	"password": "pass",
 
 	"webservice": {
 		"database": "mongodb://localhost/pa11y-webservice-test",
 		"host": "0.0.0.0",
 		"port": 3000,
-		"cron": "0 30 0 * * *"
+		"cron": "0 30 0 * * *",
+		"chromeLaunchConfig": { "args": [ "--no-sandbox" ] }
 	}
 }
