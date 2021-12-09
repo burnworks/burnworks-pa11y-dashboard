@@ -11,26 +11,25 @@
  *
  */
 
-_global.HTMLCS = new function()
-{
-    var _standards    = {};
-    var _sniffs       = [];
-    var _tags         = {};
-    var _standard     = null;
+_global.HTMLCS = new function () {
+    var _standards = {};
+    var _sniffs = [];
+    var _tags = {};
+    var _standard = null;
     var _currentSniff = null;
 
-    var _messages     = [];
+    var _messages = [];
     var _msgOverrides = {};
 
     /*
         Message type constants.
     */
-    this.ERROR   = 1;
+    this.ERROR = 1;
     this.WARNING = 2;
-    this.NOTICE  = 3;
+    this.NOTICE = 3;
 
     // The current language to use.
-    this.lang = 'en';
+    this.lang = 'ja';
 
     /**
      * Loads the specified standard and run the sniffs.
@@ -41,7 +40,7 @@ _global.HTMLCS = new function()
      * @param {Function}    failCallback The fail callback which will be called if the standard load has failed.
      * @param {String}      language     The language to use for text output.
      */
-    this.process = function(
+    this.process = function (
         standard,
         content,
         callback,
@@ -49,10 +48,10 @@ _global.HTMLCS = new function()
         language
     ) {
         // Clear previous runs.
-        _standards    = {};
-        _sniffs       = [];
-        _tags         = {};
-        _standard     = null;
+        _standards = {};
+        _sniffs = [];
+        _tags = {};
+        _standard = null;
 
         if (!content) {
             return false;
@@ -67,7 +66,7 @@ _global.HTMLCS = new function()
         if (_standards[_getStandardPath(standard)]) {
             HTMLCS.run(callback, content);
         } else {
-            this.loadStandard(standard, function() {
+            this.loadStandard(standard, function () {
                 HTMLCS.run(callback, content);
             }, failCallback);
         }
@@ -80,7 +79,7 @@ _global.HTMLCS = new function()
      *
      * @return {String}
      */
-    this.getTranslation = function(text) {
+    this.getTranslation = function (text) {
         var translations = _global.translation[this.lang];
 
         if (!translations) {
@@ -104,12 +103,12 @@ _global.HTMLCS = new function()
      * @param {String}   standard The name of the standard to load.
      * @param {Function} callback The function to call once the standard is loaded.
      */
-    this.loadStandard = function(standard, callback, failCallback) {
+    this.loadStandard = function (standard, callback, failCallback) {
         if (!standard) {
             return false;
         }
 
-        _includeStandard(standard, function() {
+        _includeStandard(standard, function () {
             _standard = standard;
             callback.call(this);
         }, failCallback);
@@ -121,8 +120,8 @@ _global.HTMLCS = new function()
      * @param {Function}    callback The function to call once all sniffs are completed.
      * @param {String|Node} content  An HTML string or a DOM node object.
      */
-    this.run = function(callback, content) {
-        var element      = null;
+    this.run = function (callback, content) {
+        var element = null;
         var loadingFrame = false;
         if (typeof content === 'string') {
             loadingFrame = true;
@@ -136,7 +135,7 @@ _global.HTMLCS = new function()
                 element = elementFrame.contentWindow.document;
             }
 
-            elementFrame.load = function() {
+            elementFrame.load = function () {
                 this.onreadystatechange = null;
                 this.onload = null;
 
@@ -144,7 +143,7 @@ _global.HTMLCS = new function()
                     element = element.getElementsByTagName('body')[0];
                     var div = element.getElementsByTagName('div')[0];
                     if (div && (div.id === '__HTMLCS-source-wrap')) {
-                        div.id  = '';
+                        div.id = '';
                         element = div;
                     }
                 }
@@ -155,7 +154,7 @@ _global.HTMLCS = new function()
             };
 
             // Satisfy IE which doesn't like onload being set dynamically.
-            elementFrame.onreadystatechange = function() {
+            elementFrame.onreadystatechange = function () {
                 if (/^(complete|loaded)$/.test(this.readyState) === true) {
                     this.onreadystatechange = null;
                     this.load();
@@ -180,7 +179,7 @@ _global.HTMLCS = new function()
             return;
         }
 
-        callback  = callback || function() {};
+        callback = callback || function () { };
         _messages = [];
 
         // Get all the elements in the parent element.
@@ -205,7 +204,7 @@ _global.HTMLCS = new function()
      *
      * @returns {Boolean}
      */
-    this.isFullDoc = function(content) {
+    this.isFullDoc = function (content) {
         var fullDoc = false;
         if (typeof content === 'string') {
             if (content.toLowerCase().indexOf('<html') !== -1) {
@@ -232,7 +231,7 @@ _global.HTMLCS = new function()
      * @param {String}  code    Unique code for the message.
      * @param {Object}  [data]  Extra data to store for the message.
      */
-    this.addMessage = function(type, element, msg, code, data) {
+    this.addMessage = function (type, element, msg, code, data) {
         code = _getMessageCode(code);
 
         _messages.push({
@@ -252,7 +251,7 @@ _global.HTMLCS = new function()
      *
      * @returns {Array} Array of message objects.
      */
-    this.getMessages = function() {
+    this.getMessages = function () {
         return _messages.concat([]);
     };
 
@@ -263,7 +262,7 @@ _global.HTMLCS = new function()
      * @param {Node}     topElement The top element of the processing.
      * @param {Function} [callback] The function to call once all tests are run.
      */
-    var _run = function(elements, topElement, callback) {
+    var _run = function (elements, topElement, callback) {
         var topMsgs = [];
         while (elements.length > 0) {
             var element = elements.shift();
@@ -290,7 +289,7 @@ _global.HTMLCS = new function()
 
                 // Save "top" messages, and reset the messages array.
                 if (tagName === '_top') {
-                    topMsgs   = _messages;
+                    topMsgs = _messages;
                     _messages = [];
                 }
             }
@@ -302,8 +301,8 @@ _global.HTMLCS = new function()
         // separately. The 1.3.1 sniff needs to run to detect any incorrect usage of the presentation
         // role.
         var presentationElems = topElement.querySelectorAll('[role="presentation"]');
-        _currentSniff         = HTMLCS_WCAG2AAA_Sniffs_Principle1_Guideline1_3_1_3_1;
-        [].forEach.call(presentationElems, function(element) {
+        _currentSniff = HTMLCS_WCAG2AAA_Sniffs_Principle1_Guideline1_3_1_3_1;
+        [].forEach.call(presentationElems, function (element) {
             _currentSniff.testSemanticPresentationRole(element);
         });
 
@@ -320,9 +319,9 @@ _global.HTMLCS = new function()
      * @param {Node}     topElement The top element of the processing.
      * @param {Function} [callback] The function to call once the processing is completed.
      */
-    var _processSniffs = function(element, sniffs, topElement, callback) {
+    var _processSniffs = function (element, sniffs, topElement, callback) {
         while (sniffs.length > 0) {
-            var sniff     = sniffs.shift();
+            var sniff = sniffs.shift();
             _currentSniff = sniff;
 
             if (sniff.useCallback === true) {
@@ -331,7 +330,7 @@ _global.HTMLCS = new function()
                 // - Recurse into ourselves with remaining sniffs, with no callback.
                 // - Clear out the list of sniffs (so they aren't run again), so the
                 //   callback (if not already recursed) can run afterwards.
-                sniff.process(element, topElement, function() {
+                sniff.process(element, topElement, function () {
                     _processSniffs(element, sniffs, topElement);
                     sniffs = [];
                 });
@@ -353,19 +352,19 @@ _global.HTMLCS = new function()
      * @param {Function} callback The function to call once the standard is included.
      * @param {Object}   options  The options for the standard (e.g. exclude sniffs).
      */
-    var _includeStandard = function(standard, callback, failCallback, options) {
+    var _includeStandard = function (standard, callback, failCallback, options) {
         if (standard.indexOf('http') !== 0) {
             standard = _getStandardPath(standard);
         }//end id
 
         // See if the ruleset object is already included (eg. if minified).
-        var parts   = standard.split('/');
+        var parts = standard.split('/');
         var ruleSet = _global['HTMLCS_' + parts[(parts.length - 2)]];
         if (ruleSet) {
             // Already included.
             _registerStandard(standard, callback, failCallback, options);
         } else {
-            _includeScript(standard, function() {
+            _includeScript(standard, function () {
                 // Script is included now register the standard.
                 _registerStandard(standard, callback, failCallback, options);
             }, failCallback);
@@ -379,13 +378,13 @@ _global.HTMLCS = new function()
      * @param {Function} callback The function to call once the standard is registered.
      * @param {Object}   options  The options for the standard (e.g. exclude sniffs).
      */
-    var _registerStandard = function(standard, callback, failCallback, options) {
+    var _registerStandard = function (standard, callback, failCallback, options) {
         // Get the object name.
         var parts = standard.split('/');
 
         // Get a copy of the ruleset object.
         var oldRuleSet = _global['HTMLCS_' + parts[(parts.length - 2)]];
-        var ruleSet    = {};
+        var ruleSet = {};
 
         for (var x in oldRuleSet) {
             if (oldRuleSet.hasOwnProperty(x) === true) {
@@ -427,7 +426,7 @@ _global.HTMLCS = new function()
      * @param {Array}    sniffs   List of sniffs to register.
      * @param {Function} callback The function to call once the sniffs are registered.
      */
-    var _registerSniffs = function(standard, sniffs, callback, failCallback) {
+    var _registerSniffs = function (standard, sniffs, callback, failCallback) {
         if (sniffs.length === 0) {
             callback.call(this);
             return;
@@ -435,7 +434,7 @@ _global.HTMLCS = new function()
 
         // Include and register sniffs.
         var sniff = sniffs.shift();
-        _loadSniffFile(standard, sniff, function() {
+        _loadSniffFile(standard, sniff, function () {
             _registerSniffs(standard, sniffs, callback, failCallback);
         }, failCallback);
     };
@@ -448,10 +447,10 @@ _global.HTMLCS = new function()
      *                                 and object specifying another standard.
      * @param {Function}      callback The function to call once the sniff is included and registered.
      */
-    var _loadSniffFile = function(standard, sniff, callback, failCallback) {
+    var _loadSniffFile = function (standard, sniff, callback, failCallback) {
         if (typeof sniff === 'string') {
             var sniffObj = _getSniff(standard, sniff);
-            var cb       = function() {
+            var cb = function () {
                 _registerSniff(standard, sniff);
                 callback.call(this);
             };
@@ -464,7 +463,7 @@ _global.HTMLCS = new function()
             }
         } else {
             // Including a whole other standard.
-            _includeStandard(sniff.standard, function() {
+            _includeStandard(sniff.standard, function () {
                 if (sniff.messages) {
                     // Add message overrides.
                     for (var msg in sniff.messages) {
@@ -486,7 +485,7 @@ _global.HTMLCS = new function()
      * @param {String} standard The name of the standard.
      * @param {String} sniff    The name of the sniff.
      */
-    var _registerSniff = function(standard, sniff) {
+    var _registerSniff = function (standard, sniff) {
         // Get the sniff object.
         var sniffObj = _getSniff(standard, sniff);
         if (!sniffObj) {
@@ -517,7 +516,7 @@ _global.HTMLCS = new function()
      *
      * @returns {String} The path to the JS file of the sniff.
      */
-    var _getSniffPath = function(standard, sniff) {
+    var _getSniffPath = function (standard, sniff) {
         var parts = standard.split('/');
         parts.pop();
         var path = parts.join('/') + '/Sniffs/' + sniff.replace(/\./g, '/') + '.js';
@@ -531,11 +530,10 @@ _global.HTMLCS = new function()
      *
      * @returns {String} The path to the local standard.
      */
-    var _getStandardPath = function(standard)
-    {
+    var _getStandardPath = function (standard) {
         // Get the include path of a local standard.
         var scripts = document.getElementsByTagName('script');
-        var path    = null;
+        var path = null;
 
         // Loop through all the script tags that exist in the document and find the one
         // that has included this file.
@@ -544,7 +542,7 @@ _global.HTMLCS = new function()
                 if (scripts[i].src.match(/HTMLCS\.js/)) {
                     // We have found our appropriate <script> tag that includes
                     // this file, we can extract the path.
-                    path = scripts[i].src.replace(/HTMLCS\.js/,'');
+                    path = scripts[i].src.replace(/HTMLCS\.js/, '');
 
                     // trim any trailing bits
                     path = path.substring(0, path.indexOf('?'));
@@ -565,10 +563,10 @@ _global.HTMLCS = new function()
      *
      * @returns {Object} The sniff object.
      */
-    var _getSniff = function(standard, sniff) {
+    var _getSniff = function (standard, sniff) {
         var name = 'HTMLCS_';
-        name    += _standards[standard].name + '_Sniffs_';
-        name    += sniff.split('.').join('_');
+        name += _standards[standard].name + '_Sniffs_';
+        name += sniff.split('.').join('_');
 
         if (!_global[name]) {
             return null;
@@ -585,7 +583,7 @@ _global.HTMLCS = new function()
      *
      * @returns {String} The full message code.
      */
-    var _getMessageCode = function(code) {
+    var _getMessageCode = function (code) {
         code = _standard + '.' + _currentSniff._name + '.' + code;
         return code;
     };
@@ -596,15 +594,15 @@ _global.HTMLCS = new function()
      * @param {String}   src      The URL to the JS file.
      * @param {Function} callback The function to call once the script is loaded.
      */
-    var _includeScript = function(src, callback, failCallback) {
-        var script    = document.createElement('script');
-        script.onload = function() {
+    var _includeScript = function (src, callback, failCallback) {
+        var script = document.createElement('script');
+        script.onload = function () {
             script.onload = null;
             script.onreadystatechange = null;
             callback.call(this);
         };
 
-        script.onerror = function() {
+        script.onerror = function () {
             script.onload = null;
             script.onreadystatechange = null;
             if (failCallback) {
@@ -612,7 +610,7 @@ _global.HTMLCS = new function()
             }
         };
 
-        script.onreadystatechange = function() {
+        script.onreadystatechange = function () {
             if (/^(complete|loaded)$/.test(this.readyState) === true) {
                 script.onreadystatechange = null;
                 script.onload();
