@@ -90,7 +90,7 @@ function initApp(config, callback) {
 
 	// Populate view locals
 	app.express.locals = {
-		lang: 'en',
+		lang: 'ja',
 		year: (new Date()).getFullYear(),
 		version: pkg.version,
 		repo: pkg.homepage,
