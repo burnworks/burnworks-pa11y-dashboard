@@ -2,6 +2,13 @@
 
 デフォルトのレポート言語設定を「日本語（ja）」に変更してビルドした版です。
 
+Pa11y Dashboard で表示されるレポートを日本語で表示したい場合は下記のようにカスタマイズした HTMLCS.js を node_modules 内にコピーしてください。
+
+```sh
+cd burnworks-pa11y-dashboard
+cp ja/HTML_CodeSniffer/build/HTMLCS.js node_modules/html_codesniffer/build/HTMLCS.js
+```
+
 ↓↓Original README↓↓
 
 # HTML_CodeSniffer
