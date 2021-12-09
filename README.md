@@ -24,6 +24,12 @@ cp config/test.sample.json config/test.json
 "password": "pass",
 ```
 
+レポートを日本語で表示したい場合は下記のようにカスタマイズした HTMLCS.js を node_modules 内にコピーしてください。
+
+```sh
+cp ja/HTML_CodeSniffer/build/HTMLCS.js node_modules/html_codesniffer/build/HTMLCS.js
+```
+
 ↓↓Original README↓↓
 
 # Pa11y Dashboard
