@@ -9,19 +9,19 @@
 // -------------------------
 
 @gray-darker: lighten(#000, 13.5%); // #222
-@gray-dark: #616D6E;
-@gray: #6C7878;
-@gray-light: #7C8C8D;
+@gray-dark: #616d6e;
+@gray: #6c7878;
+@gray-light: #7c8c8d;
 @gray-lighter: #eaeff1;
 
 // Brand colors
 // -------------------------
 
-@brand-primary: #2C3E50;
+@brand-primary: #2c3e50;
 @brand-success: #006053;
 @brand-warning: #b24d04;
 @brand-danger: #c92a2a;
-@brand-info: #177BBE;
+@brand-info: #177bbe;
 
 // Scaffolding
 // -------------------------
@@ -38,8 +38,10 @@
 // Typography
 // -------------------------
 
-@font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif: Georgia, "Times New Roman", Times, serif;
+@font-family-sans-serif: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+	"Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
+@font-family-serif: Georgia, "Times New Roman", Times, "Hiragino Mincho ProN",
+	"Hiragino Mincho Pro", "BIZ UDPMincho", serif;
 @font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base: @font-family-sans-serif;
 
@@ -143,8 +145,12 @@
 @input-color-placeholder: #acb6c0;
 
 @input-height-base: (@line-height-computed + (@padding-base-vertical * 2) + 2);
-@input-height-large: (ceil(@font-size-large * @line-height-base) + (@padding-large-vertical * 2) + 2);
-@input-height-small: (ceil(@font-size-small * @line-height-base) + (@padding-small-vertical * 2) + 2);
+@input-height-large: (
+	ceil(@font-size-large * @line-height-base) + (@padding-large-vertical * 2) + 2
+);
+@input-height-small: (
+	ceil(@font-size-small * @line-height-base) + (@padding-small-vertical * 2) + 2
+);
 
 @legend-color: @text-color;
 @legend-border-color: #e5e5e5;
@@ -156,7 +162,7 @@
 // -------------------------
 
 @dropdown-bg: #fff;
-@dropdown-border: rgba(0, 0, 0, .15);
+@dropdown-border: rgba(0, 0, 0, 0.15);
 @dropdown-fallback-border: #ccc;
 @dropdown-divider-bg: #e5e5e5;
 
@@ -367,7 +373,7 @@
 // -------------------------
 @tooltip-max-width: 200px;
 @tooltip-color: #fff;
-@tooltip-bg: rgba(0, 0, 0, .9);
+@tooltip-bg: rgba(0, 0, 0, 0.9);
 
 @tooltip-arrow-width: 5px;
 @tooltip-arrow-color: @tooltip-bg;
@@ -376,7 +382,7 @@
 // -------------------------
 @popover-bg: #fff;
 @popover-max-width: 276px;
-@popover-border-color: rgba(0, 0, 0, .2);
+@popover-border-color: rgba(0, 0, 0, 0.2);
 @popover-fallback-border-color: #ccc;
 
 @popover-title-bg: darken(@popover-bg, 3%);
@@ -385,7 +391,7 @@
 @popover-arrow-color: #fff;
 
 @popover-arrow-outer-width: (@popover-arrow-width + 1);
-@popover-arrow-outer-color: rgba(0, 0, 0, .25);
+@popover-arrow-outer-color: rgba(0, 0, 0, 0.25);
 @popover-arrow-outer-fallback-color: #999;
 
 // Labels
@@ -409,7 +415,7 @@
 @modal-title-line-height: @line-height-base;
 
 @modal-content-bg: #fff;
-@modal-content-border-color: rgba(0, 0, 0, .2);
+@modal-content-border-color: rgba(0, 0, 0, 0.2);
 @modal-content-fallback-border-color: #999;
 
 @modal-backdrop-bg: #000;
@@ -530,11 +536,11 @@
 // Carousel
 // ------------------------
 
-@carousel-text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+@carousel-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 
 @carousel-control-color: #fff;
 @carousel-control-width: 15%;
-@carousel-control-opacity: .5;
+@carousel-control-opacity: 0.5;
 @carousel-control-font-size: 20px;
 
 @carousel-indicator-active-bg: #fff;
