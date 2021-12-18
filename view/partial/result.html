@@ -115,7 +115,7 @@ along with Pa11y Dashboard. If not, see
 							{{#if ../../isTaskPage}}
 							<form class="ignore-form" action="{{../../../task.hrefIgnore}}" method="post">
 								<input type="hidden" name="rule" value="{{code}}" />
-								<input type="submit" role="link" class="btn btn-link btn-sm link" value="Ignore rule" />
+								<input type="submit" role="link" class="btn btn-link btn-sm link" value="試験項目を無効にする" />
 							</form>
 							{{/if}}
 							{{/unless}}
@@ -136,7 +136,8 @@ along with Pa11y Dashboard. If not, see
 							{{#each solutions}}
 							<li class="list-unstyled__item">
 								<a class="link" href="{{url}}" target="_blank">
-									<span class="glyphicon glyphicon-share" aria-hidden="true"></span>&nbsp;{{title}}
+									<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+									&nbsp;{{title}}
 								</a>
 							</li>
 							{{/each}}
@@ -161,12 +162,15 @@ along with Pa11y Dashboard. If not, see
 			</div>
 			{{/mainResult.errors}}
 			<div class="to-top">
-				<a class="link" href="#top" data-role="top"><span class="glyphicon glyphicon-chevron-up"
-						aria-hidden="true"></span>ページ上部に戻る</a>
+				<a class="link" href="#top" data-role="top">
+					<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+					ページ上部に戻る
+				</a>
 			</div>
 			{{else}}
-			<div class="text">素晴らしい！ エラーは見つかりませんでした。 <span class="glyphicon glyphicon-ok pull-right"
-					aria-hidden="true"></span></div>
+			<div class="text">素晴らしい！ エラーは見つかりませんでした。
+				<span class="glyphicon glyphicon-ok pull-right" aria-hidden="true"></span>
+			</div>
 			{{/if}}
 		</div>
 
@@ -187,7 +191,7 @@ along with Pa11y Dashboard. If not, see
 							{{#if ../../isTaskPage}}
 							<form class="ignore-form" action="{{../../../task.hrefIgnore}}" method="post">
 								<input type="hidden" name="rule" value="{{code}}" />
-								<input type="submit" role="link" class="btn btn-link btn-sm link" value="Ignore rule" />
+								<input type="submit" role="link" class="btn btn-link btn-sm link" value="試験項目を無効にする" />
 							</form>
 							{{/if}}
 							{{/unless}}
@@ -208,7 +212,8 @@ along with Pa11y Dashboard. If not, see
 							{{#each solutions}}
 							<li class="list-unstyled__item">
 								<a class="link" href="{{url}}" target="_blank">
-									<span class="glyphicon glyphicon-share" aria-hidden="true"></span>&nbsp;{{title}}
+									<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+									&nbsp;{{title}}
 								</a>
 							</li>
 							{{/each}}
@@ -233,12 +238,15 @@ along with Pa11y Dashboard. If not, see
 			</div>
 			{{/mainResult.warnings}}
 			<div class="to-top">
-				<a class="link" href="#top" data-role="top"><span class="glyphicon glyphicon-chevron-up"
-						aria-hidden="true"></span>ページ上部に戻る</a>
+				<a class="link" href="#top" data-role="top">
+					<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+					ページ上部に戻る
+				</a>
 			</div>
 			{{else}}
-			<div class="text">素晴らしい！ 警告箇所は見つかりませんでした。 <span class="glyphicon glyphicon-ok pull-right"
-					aria-hidden="true"></span></div>
+			<div class="text">素晴らしい！ 警告箇所は見つかりませんでした。
+				<span class="glyphicon glyphicon-ok pull-right" aria-hidden="true"></span>
+			</div>
 			{{/if}}
 		</div>
 
@@ -259,7 +267,7 @@ along with Pa11y Dashboard. If not, see
 							{{#if ../../isTaskPage}}
 							<form class="ignore-form" action="{{../../../task.hrefIgnore}}" method="post">
 								<input type="hidden" name="rule" value="{{code}}" />
-								<input type="submit" role="link" class="btn btn-link btn-sm link" value="Ignore rule" />
+								<input type="submit" role="link" class="btn btn-link btn-sm link" value="試験項目を無効にする" />
 							</form>
 							{{/if}}
 							{{/unless}}
@@ -280,7 +288,8 @@ along with Pa11y Dashboard. If not, see
 							{{#each solutions}}
 							<li class="list-unstyled__item">
 								<a class="link" href="{{url}}" target="_blank">
-									<span class="glyphicon glyphicon-share" aria-hidden="true"></span>&nbsp;{{title}}
+									<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+									&nbsp;{{title}}
 								</a>
 							</li>
 							{{/each}}
@@ -305,12 +314,15 @@ along with Pa11y Dashboard. If not, see
 			</div>
 			{{/mainResult.notices}}
 			<div class="to-top">
-				<a class="link" href="#top" data-role="top"><span class="glyphicon glyphicon-chevron-up"
-						aria-hidden="true"></span>ページ上部に戻る</a>
+				<a class="link" href="#top" data-role="top">
+					<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+					ページ上部に戻る
+				</a>
 			</div>
 			{{else}}
-			<div class="text">素晴らしい！ 確認が必要な箇所は見つかりませんでした。 <span class="glyphicon glyphicon-ok pull-right"
-					aria-hidden="true"></span></div>
+			<div class="text">素晴らしい！ 確認が必要な箇所は見つかりませんでした。
+				<span class="glyphicon glyphicon-ok pull-right" aria-hidden="true"></span>
+			</div>
 			{{/if}}
 		</div>
 
@@ -328,8 +340,7 @@ along with Pa11y Dashboard. If not, see
 							{{#if ../../isTaskPage}}
 							<form class="ignore-form" action="{{../../../task.hrefUnignore}}" method="post">
 								<input type="hidden" name="rule" value="{{name}}" />
-								<input type="submit" role="link" class="btn btn-link btn-sm link"
-									value="Unignore rule" />
+								<input type="submit" role="link" class="btn btn-link btn-sm link" value="試験項目を有効にする" />
 							</form>
 							{{/if}}
 							{{/unless}}
@@ -345,8 +356,10 @@ along with Pa11y Dashboard. If not, see
 			</div>
 			{{/mainResult.ignore}}
 			<div class="to-top">
-				<a class="link" href="#top" data-role="top"><span class="glyphicon glyphicon-chevron-up"
-						aria-hidden="true"></span>ページ上部に戻る</a>
+				<a class="link" href="#top" data-role="top">
+					<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+					ページ上部に戻る
+				</a>
 			</div>
 			{{else}}
 			<div class="text">無効にされた試験項目はありません。</div>
