@@ -127,7 +127,7 @@ along with Pa11y Dashboard. If not, see
 					<span class="text">{{message}}</span>
 					<span class="btn btn-xs btn-link link btn-details" data-role="details-collapse"
 						data-toggle="collapse" data-target="#error-index-{{@index}}" aria-expanded="false"
-						aria-controls="error-index-{{@index}}">詳細</span>
+						aria-controls="error-index-{{@index}}" aria-label="詳細を表示/非表示">詳細</span>
 
 					<div class="task-details collapse" id="error-index-{{@index}}">
 						{{#if solutions.length}}
@@ -135,7 +135,7 @@ along with Pa11y Dashboard. If not, see
 						<ul class="list-unstyled solutions-list">
 							{{#each solutions}}
 							<li class="list-unstyled__item">
-								<a class="link" href="{{url}}" target="_blank">
+								<a class="link" href="{{url}}" target="_blank" rel="noopener">
 									<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
 									&nbsp;{{title}}
 								</a>
@@ -203,7 +203,7 @@ along with Pa11y Dashboard. If not, see
 					<span class="text">{{message}}</span>
 					<span class="btn btn-xs btn-link link btn-details" data-role="details-collapse"
 						data-toggle="collapse" data-target="#warning-index-{{@index}}" aria-expanded="false"
-						aria-controls="warning-index-{{@index}}">詳細</span>
+						aria-controls="warning-index-{{@index}}" aria-label="詳細を表示/非表示">詳細</span>
 
 					<div class="task-details collapse" id="warning-index-{{@index}}">
 						{{#if solutions.length}}
@@ -211,7 +211,7 @@ along with Pa11y Dashboard. If not, see
 						<ul class="list-unstyled solutions-list">
 							{{#each solutions}}
 							<li class="list-unstyled__item">
-								<a class="link" href="{{url}}" target="_blank">
+								<a class="link" href="{{url}}" target="_blank" rel="noopener">
 									<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
 									&nbsp;{{title}}
 								</a>
@@ -279,7 +279,7 @@ along with Pa11y Dashboard. If not, see
 					<span class="text">{{message}}</span>
 					<span class="btn btn-xs btn-link link btn-details" data-role="details-collapse"
 						data-toggle="collapse" data-target="#notice-index-{{@index}}" aria-expanded="false"
-						aria-controls="notice-index-{{@index}}">詳細</span>
+						aria-controls="notice-index-{{@index}}" aria-label="詳細を表示/非表示">詳細</span>
 
 					<div class="task-details collapse" id="notice-index-{{@index}}">
 						{{#if solutions.length}}
@@ -287,7 +287,7 @@ along with Pa11y Dashboard. If not, see
 						<ul class="list-unstyled solutions-list">
 							{{#each solutions}}
 							<li class="list-unstyled__item">
-								<a class="link" href="{{url}}" target="_blank">
+								<a class="link" href="{{url}}" target="_blank" rel="noopener">
 									<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
 									&nbsp;{{title}}
 								</a>
