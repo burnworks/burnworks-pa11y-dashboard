@@ -51,15 +51,15 @@ along with Pa11y Dashboard. If not, see
 				<ul class="clearfix list-unstyled floated-list task-stats">
 					{{#lastResult}}
 					<li class="danger" title="Number of errors ({{count.error}})">{{count.error}}<span
-							class="stat-type">エラー（問題あり）</span></li>
+							class="stat-type">エラー</span></li>
 					<li class="warning" title="Number of warnings ({{count.warning}})">{{count.warning}}<span
-							class="stat-type">警告（問題の可能性あり）</span></li>
+							class="stat-type">警告</span></li>
 					<li class="info last" title="Number of notices ({{count.notice}})">{{count.notice}}<span
-							class="stat-type">確認が必要</span></li>
+							class="stat-type">要確認</span></li>
 					{{/lastResult}}
 				</ul>
 			</div>
-			<div class="last-run">最新の試験実行日： {{date-format lastResult.date format="YYYY MMM DD"}}</div>
+			<div class="last-run">最新の試験実行日： {{date-format lastResult.date format="YYYY MM DD"}}</div>
 			{{else}}
 			<p class="no-results">試験結果はありません。</p>
 			{{/if}}
