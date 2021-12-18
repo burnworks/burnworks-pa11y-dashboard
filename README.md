@@ -30,6 +30,12 @@ cp config/test.sample.json config/test.json
 cp ja/HTML_CodeSniffer/build/HTMLCS.js node_modules/html_codesniffer/build/HTMLCS.js
 ```
 
+レポートの日本語訳も追記していますので、下記のように ja.js を node_modules 内にコピーしてください。
+
+```sh
+cp ja/HTML_CodeSniffer/Translations/ja.js node_modules/html_codesniffer/Translations/ja.js
+```
+
 ↓↓Original README↓↓
 
 # Pa11y Dashboard
