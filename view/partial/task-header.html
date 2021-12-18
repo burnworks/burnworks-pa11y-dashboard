@@ -35,7 +35,8 @@ along with Pa11y Dashboard. If not, see
 					</nav>
 					{{/unless}}
 					{{#if mainResult}}
-					<div class="date">最新の試験実行日： <strong>{{date-format mainResult.date format="YYYY MMM DD"}}</strong>
+					<div class="date">最新の試験実行日： <strong>
+							{{date-format mainResult.date format="YYYY 年 MM 月 DD 日"}}</strong>
 					</div>
 					{{else}}
 					<div class="date">まだ試験が実行されていません。</div>
