@@ -1,6 +1,6 @@
-# Pa11y Dashboard カスタマイズ版
+# Pa11y Dashboard 日本語カスタマイズ版
 
-Pa11y Dashboard を実際の利用にあわせて少しカスタマイズした版です。具体的にはベーシック認証によるダッシュボード画面へのアクセス制限機能の追加、DigitalOcean で動作させる際、Puppeteer に `--no-sandbox` オプションがないとうまくいかなかったためその辺の設定を config ファイルに追加しています。
+Pa11y Dashboard を日本語化し、その他、実際の利用にあわせて少しカスタマイズした版です。具体的にはベーシック認証によるダッシュボード画面へのアクセス制限機能の追加、DigitalOcean で動作させる際、Puppeteer に `--no-sandbox` オプションがないとうまくいかなかったためその辺の設定を config ファイルに追加しています。
 
 ```sh
 cd /opt/
@@ -24,7 +24,7 @@ cp config/test.sample.json config/test.json
 "password": "pass",
 ```
 
-レポートを日本語で表示したい場合は下記のようにカスタマイズした HTMLCS.js を node_modules 内にコピーしてください。
+レポートを日本語で表示するため、下記のようにカスタマイズした HTMLCS.js を node_modules 内にコピーしてください。
 
 ```sh
 cp ja/HTML_CodeSniffer/build/HTMLCS.js node_modules/html_codesniffer/build/HTMLCS.js
