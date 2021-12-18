@@ -21,8 +21,9 @@ along with Pa11y Dashboard. If not, see
 
   <div class="clearfix">
     <div class="col-md-6 col-md-offset-3 filter-toggle no-js-hide text-center">
-      <label for="task-filter" class="filter-trigger" data-toggle="collapse" data-target="#filter-input">フィルター<span
-          class="glyphicon glyphicon-filter"></span>
+      <label for="task-filter" class="filter-trigger" data-toggle="collapse" data-target="#filter-input">
+        <span class="small">フィルター</span>
+        <span class="glyphicon glyphicon-filter"></span>
       </label>
       <div id="filter-input" class="collapse">
         <input class="form-control" id="task-filter" type="text" data-role="input"
@@ -34,7 +35,10 @@ along with Pa11y Dashboard. If not, see
   {{#if siteMessage}}
   <div class="col-md-12 clearfix" data-test="alert">
     <div class="alert alert-info site-message">
-      <h3 class="crunch-top"><span class="pull-left glyphicon glyphicon-exclamation-sign"></span> 【重要】</h3>
+      <h3 class="crunch-top">
+        <span class="pull-left glyphicon glyphicon-exclamation-sign"></span>
+        【重要】
+      </h3>
       <p class="h5">{{siteMessage}}</p>
     </div>
   </div>
