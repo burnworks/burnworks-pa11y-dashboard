@@ -181,19 +181,22 @@ $(document).ready(function () {
         return [
             {
                 color: 'rgb(216, 61, 45)',
-                label: 'エラー',
+                label: 'Errors',
+                jpLabel: 'エラー',
                 data: data.error
             },
             {
                 color: 'rgb(168, 103, 0)',
-                label: '警告',
+                label: 'Warnings',
+                jpLabel: '警告',
                 data: data.warning,
                 lines: { show: false },
                 dashes: { show: true, dashLength: [10, 5] }
             },
             {
                 color: 'rgb(23, 123, 190)',
-                label: '要確認',
+                label: 'Notices',
+                jpLabel: '要確認',
                 data: data.notice,
                 lines: { show: false },
                 dashes: { show: true, dashLength: 5 }
@@ -270,7 +273,7 @@ $(document).ready(function () {
             'data-stat-type="' + val.label.toLowerCase() + '"' +
             '/>' +
             '<label for="id' + key + '">' +
-            '<span class="stat-type">' + val.label + '</span>' +
+            '<span class="stat-type">' + val.jpLabel + '</span>' +
             '</label>' +
             '</div>' +
             '</li>'
