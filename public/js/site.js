@@ -13,21 +13,21 @@
 // You should have received a copy of the GNU General Public License
 // along with Pa11y Dashboard.  If not, see <http://www.gnu.org/licenses/>.
 
-$(document).ready(function(){
+$(document).ready(function () {
 
     var data = {};
-	var standardsList = $('[data-role="standards-list"]');
-	var standardSelect = $('[data-role="new-task-select"]');
+    var standardsList = $('[data-role="standards-list"]');
+    var standardSelect = $('[data-role="new-task-select"]');
     var taskListSelector = $('[data-role="task-list"] a');
-	var detailsCollapse = $('[data-role="details-collapse"]');
-	var contextPopover = $('[data-role="context-popover"]');
-	var ruleTooltip = $('[data-role="rule-tooltip"]');
+    var detailsCollapse = $('[data-role="details-collapse"]');
+    var contextPopover = $('[data-role="context-popover"]');
+    var ruleTooltip = $('[data-role="rule-tooltip"]');
     var toTopLinks = $('[data-role="top"]');
     var zoomResetButton = $('[data-role="zoom-reset"]');
     var graphContainer = $('[data-role="graph"]');
     var dateSelectDropdownMenu = $('[data-role="date-select-dropdown-menu"]');
     var legend = graphContainer.parent('.graph-container').find('.dashedLegend');
-	var list = localStorage.getItem("listview") || "";    // get choice or nothing
+    var list = localStorage.getItem("listview") || "";    // get choice or nothing
 
 
     var graphOptions = {
@@ -51,8 +51,8 @@ $(document).ready(function(){
         },
         points: {
             fill: true,
-            radius:4,
-            lineWidth:3
+            radius: 4,
+            lineWidth: 3
         },
         shadowSize: 0,
         grid: {
@@ -77,45 +77,45 @@ $(document).ready(function(){
         $('body').addClass('custom-legend');
     }
 
-	// Update details button title by click
-	detailsCollapse.click(function(){
-		$(this).toggleClass('btn_state_collapsed');
-	});
+    // Update details button title by click
+    detailsCollapse.click(function () {
+        $(this).toggleClass('btn_state_collapsed');
+    });
 
-	// Initialize context popovers
-	$(contextPopover).popover({
-		container: 'body',
-		placement: 'bottom'
-	});
+    // Initialize context popovers
+    $(contextPopover).popover({
+        container: 'body',
+        placement: 'bottom'
+    });
 
-	$(document.body).click(function (e) {
-		$(contextPopover).each(function () {
-			if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-				if ($(this).data('bs.popover').tip().hasClass('in')) {
-					$(this).popover('toggle');
-				}
-			}
-		});
-	});
+    $(document.body).click(function (e) {
+        $(contextPopover).each(function () {
+            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                if ($(this).data('bs.popover').tip().hasClass('in')) {
+                    $(this).popover('toggle');
+                }
+            }
+        });
+    });
 
-     // Back to top links
-    toTopLinks.click( function(e){
+    // Back to top links
+    toTopLinks.click(function (e) {
         e.preventDefault();
         $(animateSection($('#top'), -55));
     });
 
     // Switch standards list of rules
-	switchStandardsList(standardSelect);
+    switchStandardsList(standardSelect);
     $('.rules-list-title').addClass('hidden');
     $('.date-links').removeClass('list-group date-links').addClass('dropdown-menu');
     $('.dropdown-menu a').removeClass('list-group-item');
     dateSelectDropdownMenu.removeClass('hidden');
 
-	standardSelect.change( function(){
-		switchStandardsList($(this));
-	});
+    standardSelect.change(function () {
+        switchStandardsList($(this));
+    });
 
-    taskListSelector.click( function(e) {
+    taskListSelector.click(function (e) {
         e.preventDefault();
         target = $(this).attr('href');
         animateSection($(target), -25);
@@ -124,12 +124,12 @@ $(document).ready(function(){
         }
     });
 
-    zoomResetButton.click( function() {
+    zoomResetButton.click(function () {
         plotGraphData();
         toggleResetZoomButton();
     });
 
-    $.each(graphContainer, function(){
+    $.each(graphContainer, function () {
         getGraphData();
         plotGraphData();
     });
@@ -137,32 +137,32 @@ $(document).ready(function(){
     ruleTooltip.tooltip();
 
     // Function to animate sections
-    function animateSection (sectionName, offset){
+    function animateSection(sectionName, offset) {
         $('html,body').animate({
             scrollTop: $(sectionName).offset().top + offset
         }, 750);
     }
 
     // Standards list switcher for new task form
-	function switchStandardsList(el){
-		standardsList.hide();
-		chosenValue = (el.val());
-		$('[data-attr="' + chosenValue + '"]').show();
-	}
+    function switchStandardsList(el) {
+        standardsList.hide();
+        chosenValue = (el.val());
+        $('[data-attr="' + chosenValue + '"]').show();
+    }
 
-	function getGraphData() {
-        $($('[data-role="url-stats"]').get().reverse()).each( function() {
+    function getGraphData() {
+        $($('[data-role="url-stats"]').get().reverse()).each(function () {
             var el = $(this);
             storeDatum(el, getXAxisLabel(el));
         });
     }
 
-    function getXAxisLabel (el) {
+    function getXAxisLabel(el) {
         return el.find('[data-role="date"]').attr('data-value');
     }
 
-    function storeDatum (el, label) {
-        $.each(el.find('[data-label]'), function() {
+    function storeDatum(el, label) {
+        $.each(el.find('[data-label]'), function () {
             var type = $(this).attr('data-label');
             var value = $(this).html();
             if (typeof data[type] === 'undefined') {
@@ -172,7 +172,7 @@ $(document).ready(function(){
         });
     }
 
-    function plotGraphData () {
+    function plotGraphData() {
         $.plot(graphContainer, getData(), graphOptions);
         exportGraph();
     }
@@ -181,19 +181,19 @@ $(document).ready(function(){
         return [
             {
                 color: 'rgb(216, 61, 45)',
-                label: 'Errors',
+                label: 'エラー',
                 data: data.error
             },
             {
                 color: 'rgb(168, 103, 0)',
-                label: 'Warnings',
+                label: '警告',
                 data: data.warning,
                 lines: { show: false },
                 dashes: { show: true, dashLength: [10, 5] }
             },
             {
                 color: 'rgb(23, 123, 190)',
-                label: 'Notices',
+                label: '要確認',
                 data: data.notice,
                 lines: { show: false },
                 dashes: { show: true, dashLength: 5 }
@@ -205,36 +205,36 @@ $(document).ready(function(){
         zoomResetButton.toggleClass('hidden');
     }
 
-	function exportGraph() {
-		var exportBtn = $('.btn_action_export');
+    function exportGraph() {
+        var exportBtn = $('.btn_action_export');
 
-		exportBtn.click(function(e) {
-			e.preventDefault();
+        exportBtn.click(function (e) {
+            e.preventDefault();
 
-			var fileName = $('h1').text().toLowerCase().split(' ').join('_');
-			var date = new Date();
+            var fileName = $('h1').text().toLowerCase().split(' ').join('_');
+            var date = new Date();
 
-			fileName += '_' + date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+            fileName += '_' + date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
 
-			html2canvas($('.graph').get(0), {
-				onrendered: function (canvas) {
-					downloadFile(canvas.toDataURL('image/png'), fileName + '.png');
-				}
-			});
-		});
-	}
+            html2canvas($('.graph').get(0), {
+                onrendered: function (canvas) {
+                    downloadFile(canvas.toDataURL('image/png'), fileName + '.png');
+                }
+            });
+        });
+    }
 
-	function downloadFile(dataurl, filename) {
-		var link = document.createElement('a');
-		link.href = dataurl;
-		link.setAttribute('download', filename);
+    function downloadFile(dataurl, filename) {
+        var link = document.createElement('a');
+        link.href = dataurl;
+        link.setAttribute('download', filename);
 
-		var clickEvent = document.createEvent('MouseEvents');
-		clickEvent.initEvent('click', false, true);
-		link.dispatchEvent(clickEvent);
+        var clickEvent = document.createEvent('MouseEvents');
+        clickEvent.initEvent('click', false, true);
+        link.dispatchEvent(clickEvent);
 
-		return false;
-	}
+        return false;
+    }
 
     graphContainer.bind('plotselected', function (event, ranges) {
         // clamp the zooming to prevent eternal zoom
@@ -246,7 +246,7 @@ $(document).ready(function(){
         }
         // do the zooming
         plot = $.plot(graphContainer, getData(ranges.xaxis.from, ranges.xaxis.to),
-        $.extend(true, {}, graphOptions, {
+            $.extend(true, {}, graphOptions, {
                 xaxis: { min: ranges.xaxis.from, max: ranges.xaxis.to },
                 yaxis: { min: ranges.yaxis.from, max: ranges.yaxis.to }
             })
@@ -259,20 +259,20 @@ $(document).ready(function(){
     var choiceContainer = $('[data-role="series-checkboxes"]');
     var datasets = getData();
 
-    $.each(datasets, function(key, val) {
+    $.each(datasets, function (key, val) {
         var lowerCaseValue = (val.label.substring(0, val.label.length - 1)).toLowerCase();
         choiceContainer.append(
             '<li class="text-center ' + lowerCaseValue + '">' +
-                '<div class="series-checkbox-container">' +
-                    '<input type="checkbox"' +
-                        'name="' + key + '" ' +
-                        'id="id' + key + '" ' +
-                        'data-stat-type="' + val.label.toLowerCase() + '"' +
-                        '/>' +
-                    '<label for="id' + key + '">' +
-                        '<span class="stat-type">' + val.label + '</span>' +
-                    '</label>' +
-                '</div>' +
+            '<div class="series-checkbox-container">' +
+            '<input type="checkbox"' +
+            'name="' + key + '" ' +
+            'id="id' + key + '" ' +
+            'data-stat-type="' + val.label.toLowerCase() + '"' +
+            '/>' +
+            '<label for="id' + key + '">' +
+            '<span class="stat-type">' + val.label + '</span>' +
+            '</label>' +
+            '</div>' +
             '</li>'
         );
 
@@ -309,8 +309,8 @@ $(document).ready(function(){
 
     function showTooltip(x, y, contents) {
         $('<div data-role="tooltip" class="tooltip tooltip-graph in"><div class="tooltip-inner">' +
-        contents +
-        '</div></div>').css({top: y + 5,left: x + 5}).appendTo('body').fadeIn(200);
+            contents +
+            '</div></div>').css({ top: y + 5, left: x + 5 }).appendTo('body').fadeIn(200);
     }
 
     var previousPoint = null;
@@ -321,11 +321,11 @@ $(document).ready(function(){
                 $('[data-role="tooltip"]').remove();
                 var count = item.datapoint[1].toFixed(0);
                 var date = $.plot.formatDate(new Date(item.datapoint[0]), '%d %b' +
-                '<small> (%H:%M)</small>');
+                    '<small> (%H:%M)</small>');
                 var contents = '<p class="crunch">' +
                     date + '<br/>' +
                     count + ' ' + item.series.label +
-                '</[h6]>';
+                    '</[h6]>';
                 showTooltip(item.pageX, item.pageY, contents);
             }
         } else {
@@ -335,102 +335,102 @@ $(document).ready(function(){
     });
 
 
-	// Task filter
+    // Task filter
 
-	function initTaskFilter (container) {
-		var tasks = initTaskFilterTasks(container);
-		var input = initTaskFilterInput(container, tasks);
-	}
+    function initTaskFilter(container) {
+        var tasks = initTaskFilterTasks(container);
+        var input = initTaskFilterInput(container, tasks);
+    }
 
-	function initTaskFilterTasks (container) {
-		var tasks = container.find('[data-role=task]');
-		return tasks;
-	}
+    function initTaskFilterTasks(container) {
+        var tasks = container.find('[data-role=task]');
+        return tasks;
+    }
 
-	function initTaskFilterInput (container, tasks) {
-		var input = container.find('[data-role=input]');
-		input.on('keyup', function () {
-			filterTasks(tasks, input.val());
-		});
-		return input;
-	}
+    function initTaskFilterInput(container, tasks) {
+        var input = container.find('[data-role=input]');
+        input.on('keyup', function () {
+            filterTasks(tasks, input.val());
+        });
+        return input;
+    }
 
-	function filterTasks (tasks, query) {
-		query = $.trim(query.replace(/[^a-z0-9\s]+/gi, ''));
-		tasks.removeClass('hidden');
-		if (/^\s*$/.test(query)) {
-			return;
-		}
-		var queryRegExp = new RegExp('(' + query.replace(/\s+/gi, '|') + ')', 'i');
-		tasks.filter(function () {
-			return !queryRegExp.test($(this).data('keywords'));
-		}).addClass('hidden');
-	}
+    function filterTasks(tasks, query) {
+        query = $.trim(query.replace(/[^a-z0-9\s]+/gi, ''));
+        tasks.removeClass('hidden');
+        if (/^\s*$/.test(query)) {
+            return;
+        }
+        var queryRegExp = new RegExp('(' + query.replace(/\s+/gi, '|') + ')', 'i');
+        tasks.filter(function () {
+            return !queryRegExp.test($(this).data('keywords'));
+        }).addClass('hidden');
+    }
 
-	var taskLists = $('[data-control=task-list]');
-	if (taskLists.length > 0) {
-		$('[data-control=task-list]').each(function () {
-			initTaskFilter($(this));
-		});
-	}
+    var taskLists = $('[data-control=task-list]');
+    if (taskLists.length > 0) {
+        $('[data-control=task-list]').each(function () {
+            initTaskFilter($(this));
+        });
+    }
 
-	// Extend public/js/vendor/bootstrap/js/collapse.js
-	// Add keyboard control for filters
+    // Extend public/js/vendor/bootstrap/js/collapse.js
+    // Add keyboard control for filters
 
-	$.fn.collapse.Constructor.prototype.keydown = function (e) {
-		var $this = $(this);
-		var k = e.which || e.keyCode;
+    $.fn.collapse.Constructor.prototype.keydown = function (e) {
+        var $this = $(this);
+        var k = e.which || e.keyCode;
 
-		if (!/(13|32)/.test(k)) {
-			return;
-		}
-		if (k === 13 || k === 32) {
-			$this.click();
-		}
+        if (!/(13|32)/.test(k)) {
+            return;
+        }
+        if (k === 13 || k === 32) {
+            $this.click();
+        }
 
-		e.preventDefault();
-		e.stopPropagation();
-	};
+        e.preventDefault();
+        e.stopPropagation();
+    };
 
-	$('[data-toggle="collapse"]').attr('role', 'button').attr('tabindex', 0);
-	$(document).on(
-		'keydown.collapse.data-api',
-		'[data-toggle="collapse"]',
-		$.fn.collapse.Constructor.prototype.keydown
-	);
+    $('[data-toggle="collapse"]').attr('role', 'button').attr('tabindex', 0);
+    $(document).on(
+        'keydown.collapse.data-api',
+        '[data-toggle="collapse"]',
+        $.fn.collapse.Constructor.prototype.keydown
+    );
 
-	// List View
-	$('.btn-list').click(function () {
-		var elements = $("#grid-container .task-card");
-		for (i = 0; i < elements.length; i++) {
-			$(elements[i]).removeClass('col-md-4 col-sm-6');
-			$(elements[i]).addClass('col-md-12');
-			$(elements[i]).find('.gridview:nth-child(1)').addClass('listview col-md-9 col-sm-8');
-			$(elements[i]).find('.gridview:nth-child(2)').addClass('listview col-md-3 col-sm-4 task-actions clearfix');
-			$(elements[i]).find('.gridview').removeClass('gridview');
-		};
-		$('.view-btn').removeClass('btn-default')
-		$(this).addClass('btn-default');
-		localStorage.setItem("listview", "yes") //save the choice
-	});
+    // List View
+    $('.btn-list').click(function () {
+        var elements = $("#grid-container .task-card");
+        for (i = 0; i < elements.length; i++) {
+            $(elements[i]).removeClass('col-md-4 col-sm-6');
+            $(elements[i]).addClass('col-md-12');
+            $(elements[i]).find('.gridview:nth-child(1)').addClass('listview col-md-9 col-sm-8');
+            $(elements[i]).find('.gridview:nth-child(2)').addClass('listview col-md-3 col-sm-4 task-actions clearfix');
+            $(elements[i]).find('.gridview').removeClass('gridview');
+        };
+        $('.view-btn').removeClass('btn-default')
+        $(this).addClass('btn-default');
+        localStorage.setItem("listview", "yes") //save the choice
+    });
 
-	// Grid View
-	$('.btn-grid').click(function () {
-		var elements = $("#grid-container .task-card");
-		for (i = 0; i < elements.length; i++) {
-			$(elements[i]).removeClass('col-md-12');
-			$(elements[i]).addClass('col-md-4 col-sm-6');
-			$(elements[i]).find('.listview').addClass('gridview')
-			$(elements[i]).find('.listview:nth-child(1)').removeClass('listview col-md-9 col-sm-8');
-			$(elements[i]).find('.listview:nth-child(2)').removeClass('listview col-md-3 col-sm-4 task-actions clearfix');
-		};
-		$('.view-btn').removeClass('btn-default')
-		$(this).addClass('btn-default')
-		localStorage.setItem("listview", "") //clears the choice
-	});
+    // Grid View
+    $('.btn-grid').click(function () {
+        var elements = $("#grid-container .task-card");
+        for (i = 0; i < elements.length; i++) {
+            $(elements[i]).removeClass('col-md-12');
+            $(elements[i]).addClass('col-md-4 col-sm-6');
+            $(elements[i]).find('.listview').addClass('gridview')
+            $(elements[i]).find('.listview:nth-child(1)').removeClass('listview col-md-9 col-sm-8');
+            $(elements[i]).find('.listview:nth-child(2)').removeClass('listview col-md-3 col-sm-4 task-actions clearfix');
+        };
+        $('.view-btn').removeClass('btn-default')
+        $(this).addClass('btn-default')
+        localStorage.setItem("listview", "") //clears the choice
+    });
 
-	//load the view as per user's choice
-	if (list === 'yes') {
-		$('.btn-list').trigger('click');
-	}
+    //load the view as per user's choice
+    if (list === 'yes') {
+        $('.btn-list').trigger('click');
+    }
 });
