@@ -32,7 +32,7 @@ along with Pa11y Dashboard. If not, see
 				{{/if}}
 				{{#if isResultPage}}
 				<li><a href="{{task.href}}">{{task.name}}</a></li>
-				<li class="active">Results for {{date-format mainResult.date format="YYYY MMM DD"}}</li>
+				<li class="active">{{date-format mainResult.date format="YYYY 年 MM 月 DD 日"}}の試験結果</li>
 				{{/if}}
 			</ol>
 		</div>

@@ -59,7 +59,7 @@ along with Pa11y Dashboard. If not, see
 					{{/lastResult}}
 				</ul>
 			</div>
-			<div class="last-run">最新の試験実行日： {{date-format lastResult.date format="YYYY MM DD"}}</div>
+			<div class="last-run">最新の試験実行日： {{date-format lastResult.date format="YYYY 年 MM 月 DD 日"}}</div>
 			{{else}}
 			<p class="no-results">試験結果はありません。</p>
 			{{/if}}

@@ -82,7 +82,8 @@ along with Pa11y Dashboard. If not, see
 			<tbody>
 				{{#results}}
 				<tr data-role="url-stats">
-					<td data-value="{{date-timestamp date}}" data-role="date">{{date-format date format="YYYY MMM DD"}}
+					<td data-value="{{date-timestamp date}}" data-role="date">
+						{{date-format date format="YYYY 年 MM 月 DD 日"}}
 					</td>
 					<td class="text-center" data-label="error">{{count.error}}</td>
 					<td class="text-center" data-label="warning">{{count.warning}}</td>

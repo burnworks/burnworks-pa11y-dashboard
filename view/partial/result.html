@@ -40,13 +40,13 @@ along with Pa11y Dashboard. If not, see
 					<div class="btn-group block-level clearfix">
 						<h2 class="h4">
 							<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-							&nbsp;&nbsp;{{date-format task.lastResult.date format="YYYY MMM DD"}}
+							&nbsp;&nbsp;{{date-format task.lastResult.date format="YYYY 年 MM 月 DD 日"}}
 						</h2>
 						<h3 class="h5 show-stats" id="dates-navigation">試験結果の日付を選択</h3>
 						<nav aria-labelledby="dates-navigation">
 							<ul class="dates-list">
 								{{#results}}
-								<li><a class="" href="{{href}}">{{date-format date format="YYYY MMM DD"}}</a></li>
+								<li><a class="" href="{{href}}">{{date-format date format="YYYY 年 MM 月 DD 日"}}</a></li>
 								{{/results}}
 							</ul>
 						</nav>
@@ -74,19 +74,19 @@ along with Pa11y Dashboard. If not, see
 		<li class="category-list__item category-list__item_type_error active" role="presentation">
 			<a class="category-list__link" id="errors" href="#errors-list" aria-controls="errors-list" role="tab"
 				data-toggle="tab" data-test="task-errors">
-				エラー（問題あり） ( {{mainResult.count.error}} )
+				エラー<span class="small">（問題あり）</span> ( {{mainResult.count.error}} )
 			</a>
 		</li>
 		<li class="category-list__item category-list__item_type_warning" role="presentation">
 			<a class="category-list__link" id="warnings" href="#warnings-list" aria-controls="warnings-list" role="tab"
 				data-toggle="tab" data-test="task-warnings">
-				警告（問題の可能性あり） ( {{mainResult.count.warning}} )
+				警告<span class="small">（問題の可能性あり）</span> ( {{mainResult.count.warning}} )
 			</a>
 		</li>
 		<li class="category-list__item category-list__item_type_notice" role="presentation">
 			<a class="category-list__link" id="notices" href="#notices-list" aria-controls="notices-list" role="tab"
 				data-toggle="tab" data-test="task-notices">
-				確認が必要 ( {{mainResult.count.notice}} )
+				要確認 ( {{mainResult.count.notice}} )
 			</a>
 		</li>
 		<li class="category-list__item category-list__item_type_ignore" role="presentation">
