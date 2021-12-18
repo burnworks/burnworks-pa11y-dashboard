@@ -36,6 +36,10 @@ cp ja/HTML_CodeSniffer/build/HTMLCS.js node_modules/html_codesniffer/build/HTMLC
 cp ja/HTML_CodeSniffer/Translations/ja.js node_modules/html_codesniffer/Translations/ja.js
 ```
 
+![ダッシュボード](https://burnworks.imgix.net/img/post/pa11y-dashboard-ja.png?auto=format&lossless=true)
+
+![試験結果ページ](https://burnworks.imgix.net/img/post/pa11y-dashboard-ja-result.png?auto=format&lossless=true)
+
 ↓↓Original README↓↓
 
 # Pa11y Dashboard
